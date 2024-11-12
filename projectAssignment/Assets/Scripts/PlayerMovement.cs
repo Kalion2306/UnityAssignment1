@@ -3,7 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     //sets a changable speed variable
@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -54,13 +56,6 @@ public class Player : MonoBehaviour
 
     }
     
-    public void OnShoot()
-    {
-        transform.GetChild(1).GetComponent<bulletspawner>().shoot();
-    }
-
-
-
 
     void RotatePlayerRaycast()
     {

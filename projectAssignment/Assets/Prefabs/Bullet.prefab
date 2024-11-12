@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3441724351723454161}
   - component: {fileID: -4046319077079410121}
   - component: {fileID: 7006629004155731501}
+  - component: {fileID: 7118171296066398105}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -29,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7133366338553015329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 2.5017336e-21, y: 0.9996639, z: 9.6462733e-20, w: -0.025925998}
+  m_LocalPosition: {x: 19.738363, y: 1.0000001, z: 6.010608}
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,3 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296ea383114765548816d8eae3184437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 2
+  bulletspeed: 20
+--- !u!114 &7118171296066398105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133366338553015329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7336ca63a42148d44aa6e962ad8d67c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  exclusionList:
+  - Player
