@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,7 @@ public class Player : MonoBehaviour
 
     //sets a changable speed variable
     public float speed = 2;
+    public float rotspeed = 10;
 
     //creates a rigidbody for use of movement
     Rigidbody rb;
@@ -14,6 +17,7 @@ public class Player : MonoBehaviour
 
     public Camera cam;
     public GameObject target;
+    int timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,13 @@ public class Player : MonoBehaviour
     void Update()
     {
 
+        timer++;
+
+        if (timer >= 5)
+        {
+            timer = 0;
+            RotatePlayerRaycast();
+        }
         //sets up normalised axial movement
         Vector2 direction = input.ReadValue<Vector2>();
 
@@ -41,13 +52,15 @@ public class Player : MonoBehaviour
 
 
 
-        RotatePlayerRaycast();
     }
     
     public void OnShoot()
     {
         transform.GetChild(1).GetComponent<bulletspawner>().shoot();
     }
+
+
+
 
     void RotatePlayerRaycast()
     {
@@ -61,13 +74,14 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, layer_mask))
         {
-            Vector3 lookat = hit.point;
-
+            target.transform.position = hit.point;
             
+            Vector3 lookat = hit.point - transform.position;
+            lookat.y = 0;
+            lookat.Normalize();
 
-            lookat.y = 1;
-            transform.LookAt(lookat);
-            target.transform.position = lookat;
+
+            transform.forward = Vector3.Lerp(transform.forward, lookat, rotspeed * 5 * Time.deltaTime);
 
         }
     }
