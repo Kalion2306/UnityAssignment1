@@ -783,7 +783,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 604290191}
-  - component: {fileID: 604290192}
+  - component: {fileID: 604290193}
+  - component: {fileID: 604290194}
   m_Layer: 0
   m_Name: bulletspawner
   m_TagString: Untagged
@@ -807,7 +808,7 @@ Transform:
   - {fileID: 1624358195}
   m_Father: {fileID: 1524367265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &604290192
+--- !u!114 &604290193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -816,10 +817,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 604290190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc84edd5d8760c4585b8bb6a4b0883b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0953d6d6b13557c4abbd48bba9fe046f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotspeed: 10
+  cam: {fileID: 963194227}
+  target: {fileID: 907951191}
+  player: {fileID: 1524367261}
   bullet: {fileID: 7133366338553015329, guid: ff2188570ebb48b43904e40bdf6f660c, type: 3}
+--- !u!114 &604290194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604290190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7628e6f17b831fa45b7081ac0f8b3828, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &658990528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,9 +1595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524367265}
-  - component: {fileID: 1524367270}
   - component: {fileID: 1524367266}
-  - component: {fileID: 1524367271}
   - component: {fileID: 1524367264}
   - component: {fileID: 1524367263}
   - component: {fileID: 1524367262}
@@ -1678,9 +1711,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.23
-  rotspeed: 10
-  cam: {fileID: 963194227}
-  target: {fileID: 907951191}
 --- !u!54 &1524367267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1738,31 +1768,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1524367270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524367261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed35df634f7d0b4cac9af101dc1bb20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
---- !u!114 &1524367271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524367261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0953d6d6b13557c4abbd48bba9fe046f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1624358194
 GameObject:
   m_ObjectHideFlags: 0

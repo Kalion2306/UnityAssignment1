@@ -1,5 +1,5 @@
 {
-    "name": "Movement",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player",
@@ -27,6 +27,15 @@
                     "name": "shoot",
                     "type": "Button",
                     "id": "4f8ed37c-e6c7-4fa5-b558-0704eac0a70c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "DropKick",
+                    "type": "Button",
+                    "id": "c8f659fd-6483-4e50-9f1f-b17b05436d46",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -108,6 +117,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f3df794-e6e0-4d30-a4a7-f81232d5a6c0",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropKick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
