@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     public int damage = 2;
     Rigidbody rb;
@@ -15,6 +15,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Player Damaged");
             other.GetComponent<PlayerHealth>().health -= damage;
         }
     }
