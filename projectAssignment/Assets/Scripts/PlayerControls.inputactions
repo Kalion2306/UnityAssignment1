@@ -33,9 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "DropKick",
+                    "name": "dropKick",
                     "type": "Button",
                     "id": "c8f659fd-6483-4e50-9f1f-b17b05436d46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "splitAim",
+                    "type": "Button",
+                    "id": "81aed488-0c28-481c-ba92-7e8c9027dd5f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -122,12 +131,23 @@
                 },
                 {
                     "name": "",
+                    "id": "eaabfa84-2bf5-4fb8-8eab-c5451719ff6f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "splitAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4f3df794-e6e0-4d30-a4a7-f81232d5a6c0",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DropKick",
+                    "action": "dropKick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
