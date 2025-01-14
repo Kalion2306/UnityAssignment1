@@ -393,7 +393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &185038921
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,7 +1707,7 @@ Transform:
   m_GameObject: {fileID: 796372113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: -13.837048, z: 1.0577812}
+  m_LocalPosition: {x: 1.15, y: -3.5999997, z: 1.0577812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1945,7 +1945,7 @@ Transform:
   m_GameObject: {fileID: 907951191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5253749, y: -13.837048, z: 1.0577812}
+  m_LocalPosition: {x: -0.5253749, y: -3.6, z: 1.0577812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2342,7 +2342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1507189423
 Transform:
   m_ObjectHideFlags: 0
@@ -2606,7 +2606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a5b59ef677bbb4fb3ae57f22545f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.23
+  speed: 0.2
 --- !u!54 &1524367267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2692,6 +2692,7 @@ MonoBehaviour:
   rotspeed: 10
   cam: {fileID: 963194227}
   mainTarget: {fileID: 907951191}
+  altTarget: {fileID: 796372113}
   Cooldown: 0.2
   LeftHand:
   - {fileID: 1503414920}
@@ -2704,6 +2705,7 @@ MonoBehaviour:
   - {fileID: 604290190}
   - {fileID: 1507189422}
   - {fileID: 185038920}
+  activeGuns: 2
 --- !u!1 &1530958899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,8 +3398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86f170c3387b004383bf3fdb96ab41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMin: 1000
-  spawnMax: 5000
+  spawnMin: 2
+  spawnMax: 5
   enemies:
   - {fileID: 981465242167954505, guid: 77cde6703da98944aa2056953ade681c, type: 3}
   spawners:

@@ -18,13 +18,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag.Equals("GameWorld"))
         {
-            Debug.Log("Hit");
             Destroy(gameObject);
         }
 
         if (other.tag.Equals("Enemy"))
         {
-            Debug.Log("Hit");
             Destroy(gameObject);
         }
     }

@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
     public Camera cam;
     public GameObject mainTarget;
+    public GameObject altTarget;
     int timer = 0;
 
 
@@ -23,10 +24,16 @@ public class PlayerAttack : MonoBehaviour
     public GameObject[] RightHand;
     public GameObject[] fireOrder;
 
+
+
+
+    Vector2 splitpos;
+    public int activeGuns = 2;
+
     int nextshot;
 
 
-
+    //sets up inputs
     private void Start()
     {
         mouse = GetComponent<PlayerInput>().actions.FindAction("mousePos");
@@ -45,16 +52,57 @@ public class PlayerAttack : MonoBehaviour
         timer++;
         Cooldown_Timer += Time.deltaTime;
 
+
+        Vector3 targetlock = mainTarget.transform.position - transform.position;
+        Vector3 altLock = altTarget.transform.position - transform.position;
+
+        float handcheck = Vector3.SignedAngle(altLock, targetlock, Vector3.up);
+        
+        //aiming
         if (timer >= 5)
         {
             timer = 0;
 
 
             Vector2 mousepos = mouse.ReadValue<Vector2>();
-            RotateRight(mousepos);
-            RotateLeft(mousepos);
+
+
+            //if not splitting set the altfire to match, stop when splitting to freeze the current position
+            if (split_action.ReadValue<float>() == 0) 
+            {
+                splitpos = mousepos;
+                altTarget.transform.position = mainTarget.transform.position;
+                altTarget.GetComponent<Renderer>().enabled = false;
+            }
+            else
+            {
+                altTarget.GetComponent<Renderer>().enabled = true;
+            }
+
+            if (handcheck < 0)
+            {
+                RotateSplitGuns(splitpos,RightHand);
+                RotateGuns(mousepos,LeftHand);
+            }
+            else
+            {
+                RotateGuns(mousepos,RightHand);
+                RotateSplitGuns(splitpos,LeftHand);
+            }
+
+            
+
         }
 
+        //players rotation
+        Vector3 lookat = (targetlock.normalized + altLock.normalized).normalized;
+
+        lookat.y = 0;
+
+        transform.forward = Vector3.Lerp(transform.forward,lookat,0.1f);
+
+
+        //shooting
         if (Cooldown_Timer >= Cooldown)
         {
             if (shoot_action.ReadValue<float>() == 1)
@@ -62,8 +110,9 @@ public class PlayerAttack : MonoBehaviour
                 fireOrder[nextshot].GetComponent<bulletspawner>().shoot();
                 Cooldown_Timer = 0;
 
+                //makes the guns shoot in any sequance I want from 1 to 4
                 nextshot++;
-                if (nextshot >= 4)
+                if (nextshot >= activeGuns)
                 {
                     nextshot = 0;
                 }
@@ -74,14 +123,13 @@ public class PlayerAttack : MonoBehaviour
 
 
 
-
-    void RotateRight(Vector2 target)
+    //makes rotations happen smoothley
+    void RotateGuns(Vector2 position,GameObject[] hand)
     {
         Vector2 mousepos = mouse.ReadValue<Vector2>();
 
 
-        Ray ray = cam.ScreenPointToRay(mousepos);
-        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.yellow);
+        Ray ray = cam.ScreenPointToRay(position);
 
         int layer_mask = 1 << LayerMask.NameToLayer("Raycast");
 
@@ -95,28 +143,26 @@ public class PlayerAttack : MonoBehaviour
             lookat.Normalize();
 
 
-            for (int h = 0; h < RightHand.Length; h++)
+            for (int h = 0; h < hand.Length; h++)
             {
-                float angle = Vector3.SignedAngle(RightHand[h].transform.forward, Vector3.Lerp(RightHand[h].transform.forward, lookat, rotspeed * 5 * Time.deltaTime), Vector3.up);
-                RightHand[h].transform.RotateAround(transform.position, Vector3.up, angle);
+                float angle = Vector3.SignedAngle(hand[h].transform.forward, Vector3.Lerp(hand[h].transform.forward, lookat, rotspeed * 5 * Time.deltaTime), Vector3.up);
+                hand[h].transform.RotateAround(transform.position, Vector3.up, angle);
             }
         }
     }
 
-
-    void RotateLeft(Vector2 target)
+    //same as above function, but doesn't set the targets position to avoid instant swapping
+    void RotateSplitGuns(Vector2 position, GameObject[] hand)
     {
         Vector2 mousepos = mouse.ReadValue<Vector2>();
 
 
-        Ray ray = cam.ScreenPointToRay(mousepos);
-        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.yellow);
+        Ray ray = cam.ScreenPointToRay(position);
 
         int layer_mask = 1 << LayerMask.NameToLayer("Raycast");
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, layer_mask))
         {
-            mainTarget.transform.position = hit.point;
 
             //direction to target
             Vector3 lookat = hit.point - transform.position;
@@ -124,10 +170,10 @@ public class PlayerAttack : MonoBehaviour
             lookat.Normalize();
 
 
-            for (int h = 0; h < LeftHand.Length; h++)
+            for (int h = 0; h < hand.Length; h++)
             {
-                float angle = Vector3.SignedAngle(LeftHand[h].transform.forward, Vector3.Lerp(LeftHand[h].transform.forward, lookat, rotspeed * 5 * Time.deltaTime), Vector3.up);
-                LeftHand[h].transform.RotateAround(transform.position, Vector3.up, angle);
+                float angle = Vector3.SignedAngle(hand[h].transform.forward, Vector3.Lerp(hand[h].transform.forward, lookat, rotspeed * 5 * Time.deltaTime), Vector3.up);
+                hand[h].transform.RotateAround(transform.position, Vector3.up, angle);
             }
         }
     }
