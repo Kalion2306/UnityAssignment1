@@ -25,5 +25,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (other.tag.Equals("Shield"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

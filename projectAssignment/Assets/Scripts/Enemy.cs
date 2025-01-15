@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        if (playerTransform == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

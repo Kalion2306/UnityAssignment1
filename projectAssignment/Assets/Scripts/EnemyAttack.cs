@@ -15,8 +15,10 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Player Damaged");
-            other.GetComponent<PlayerHealth>().health -= damage;
+            if (other.GetComponent<PlayerHealth>().invulnerable == false)
+            {
+                other.GetComponent<PlayerHealth>().health -= damage;
+            }
         }
     }
 }

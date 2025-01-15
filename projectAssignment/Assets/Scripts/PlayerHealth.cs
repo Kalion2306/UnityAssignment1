@@ -1,24 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 5;
+    public int health = 20;
+    public GameObject losesign;
+    public bool invulnerable;
 
+    private void Start()
+    {
+        losesign.SetActive(false);
+    }
 
     private void Update()
     {
+
         if (health <= 0)
         {
-            Debug.Log(gameObject + " is destroyed");
-            if (gameObject.name.Equals("Player"))
+                losesign.SetActive(true);
                 Time.timeScale = 0;
-            else
-            {
-                Debug.Log("you are dead");
-                Time.timeScale = 0;
-            }
+        }
+    }
+
+    void OnInvulnerability()
+    {
+        if (!invulnerable)
+        {
+            invulnerable = true;
+        }
+        else
+        {
+            invulnerable = false;
         }
     }
 }

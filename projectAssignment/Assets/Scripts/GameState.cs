@@ -1,25 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameState : MonoBehaviour
 {
-    float timer = 0;
+    public GameObject winsign;
+    public GameObject scoresign;
+    public GameObject getscore;
+
+    public float gameTimer = 60;
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0;
+        winsign.SetActive(false);
+        scoresign.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= 60)
+        gameTimer -= Time.deltaTime;
+        if (gameTimer <= 0)
         {
-            print("Game Won!");
+            winsign.SetActive(true);
+            scoresign.SetActive(true);
+
+            scoresign.GetComponent<Text>().text = "you're score is \n" + getscore.GetComponent<points>().score;
             Time.timeScale = 0;
         }
+    }
+
+    void OnExit()
+    {
+        Application.Quit();
     }
 }

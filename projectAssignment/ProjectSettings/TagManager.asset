@@ -6,6 +6,9 @@ TagManager:
   tags:
   - GameWorld
   - Enemy
+  - Shield
+  - PowerUp
+  - bullet
   layers:
   - Default
   - TransparentFX

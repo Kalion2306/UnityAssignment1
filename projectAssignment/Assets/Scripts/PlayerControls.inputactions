@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "dropKick",
+                    "name": "invulnerability",
                     "type": "Button",
                     "id": "c8f659fd-6483-4e50-9f1f-b17b05436d46",
                     "expectedControlType": "Button",
@@ -45,6 +45,15 @@
                     "name": "splitAim",
                     "type": "Button",
                     "id": "81aed488-0c28-481c-ba92-7e8c9027dd5f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "exit",
+                    "type": "Button",
+                    "id": "a778f260-614f-4d27-951c-5fb737feb93b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -147,7 +156,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "dropKick",
+                    "action": "invulnerability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5112781-f5d5-4a34-86b0-fac4f2ea5c33",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

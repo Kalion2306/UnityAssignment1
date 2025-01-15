@@ -13,7 +13,6 @@ public class PlayerAttack : MonoBehaviour
     public Camera cam;
     public GameObject mainTarget;
     public GameObject altTarget;
-    int timer = 0;
 
 
     float Cooldown_Timer = 0;
@@ -49,7 +48,6 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Update()
     {
-        timer++;
         Cooldown_Timer += Time.deltaTime;
 
 
@@ -57,11 +55,29 @@ public class PlayerAttack : MonoBehaviour
         Vector3 altLock = altTarget.transform.position - transform.position;
 
         float handcheck = Vector3.SignedAngle(altLock, targetlock, Vector3.up);
-        
-        //aiming
-        if (timer >= 5)
+
+
+        //handcount
+        if (activeGuns >= 3)
         {
-            timer = 0;
+            LeftHand[1].SetActive(true);
+        }
+        else
+        {
+            LeftHand[1].SetActive(false);
+        }
+
+        if (activeGuns >= 4)
+        {
+            RightHand[1].SetActive(true);
+        }
+        else
+        {
+            RightHand[1].SetActive(false);
+        }
+
+
+        //aiming
 
 
             Vector2 mousepos = mouse.ReadValue<Vector2>();
@@ -91,8 +107,6 @@ public class PlayerAttack : MonoBehaviour
             }
 
             
-
-        }
 
         //players rotation
         Vector3 lookat = (targetlock.normalized + altLock.normalized).normalized;

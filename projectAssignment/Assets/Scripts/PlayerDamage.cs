@@ -14,7 +14,7 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && other.tag != "Shield")
         {
             other.GetComponent<EnemyHealth>().health -= damage;
         }
