@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
     {
         winsign.SetActive(false);
         scoresign.SetActive(false);
+
     }
 
     // Update is called once per frame
