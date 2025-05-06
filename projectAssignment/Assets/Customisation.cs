@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class Customisation : MonoBehaviour
 {
 
-    Color[] colors = { Color.green, Color.red, Color.blue };
+    public Color[] colors = { Color.green, Color.red, Color.blue };
     public GameObject[] Headpieces = { };
     public GameObject[] Guns = { };
+
 
     private void OnEnable()
     {
@@ -24,11 +25,11 @@ public class Customisation : MonoBehaviour
         {
             if (i == head)
             {
-                Headpieces[i].GetComponent<Renderer>().enabled = true;
+                Headpieces[i].SetActive(true);
             }
             else
             {
-                Headpieces[i].GetComponent<Renderer>().enabled = false;
+                Headpieces[i].SetActive(false);
             }
         }
 
@@ -36,11 +37,11 @@ public class Customisation : MonoBehaviour
         {
             if (i == gun)
             {
-                Guns[i].GetComponent<Renderer>().enabled = true;
+                Guns[i].SetActive(true);
             }
             else
             {
-                Guns[i].GetComponent<Renderer>().enabled = false;
+                Guns[i].SetActive(false);
             }
         }
     }
@@ -51,6 +52,7 @@ public class Customisation : MonoBehaviour
         GetComponent<PlayerMovement>().speed = 0;
     }
 
+    //values for all of the objects for referance in UI
     public int setting = 0;
     public int col = 0;
     public int head = 0;
@@ -64,20 +66,20 @@ public class Customisation : MonoBehaviour
         {
             GetComponent<PlayerMovement>().speed = 0;
 
-            if(Input.GetKeyDown(KeyCode.S))
+            if(Input.GetKeyDown(KeyCode.W))
             {
                 setting--;
                 if (setting < 0)
                 {
-                    setting = 3;
+                    setting = 2;
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 setting++;
 
-                if (setting > 3)
+                if (setting > 2)
                 {
                     setting = 0;
                 }
@@ -133,11 +135,11 @@ public class Customisation : MonoBehaviour
                     {
                         if (i == head)
                         {
-                            Headpieces[i].GetComponent<Renderer>().enabled = true;
+                            Headpieces[i].SetActive(true);
                         }
                         else
                         {
-                            Headpieces[i].GetComponent<Renderer>().enabled = false;
+                            Headpieces[i].SetActive(false);
                         }
                     }
                     break;
@@ -167,11 +169,11 @@ public class Customisation : MonoBehaviour
                     {
                         if (i == gun)
                         {
-                            Guns[i].GetComponent<Renderer>().enabled = true;
+                            Guns[i].SetActive(true);
                         }
                         else
                         {
-                            Guns[i].GetComponent<Renderer>().enabled = false;
+                            Guns[i].SetActive(false);
                         }
                     }
                     break;
